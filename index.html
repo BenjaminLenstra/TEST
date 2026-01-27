@@ -40,12 +40,10 @@
         <script src="js/tailDT.js"></script>
 <script src="js/nouislider.min.js"></script>
 <script src="js/wNumb.js"></script>
-        <script src="data/Wegen_1.js"></script>
-        <script src="data/Gebruiksfuncties_2.js"></script>
-        <script src="data/ONTWERP_3.js"></script>
+        <script src="data/Gebruiksfuncties_1.js"></script>
+        <script src="data/ONTWERP_2.js"></script>
+        <script src="data/Bomen_3.js"></script>
         <script src="data/Kansen_4.js"></script>
-        <script src="data/Gebruiksaanwijzing_5.js"></script>
-        <script src="data/Animatie_6.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -64,7 +62,7 @@
         }
         var map = L.map('map', {
             zoomControl:false, maxZoom:28, minZoom:1
-        }).fitBounds([[52.16929450590969,5.459097203412237],[52.17330009769062,5.467437191609771]]);
+        }).fitBounds([[52.170767419832444,5.453182915778695],[52.17478610276998,5.480507232347872]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -148,186 +146,7 @@
         });
         layer_CartoDbPositron_0;
         map.addLayer(layer_CartoDbPositron_0);
-        function pop_Wegen_1(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="Weggebruiker" colspan="2"><strong>Weggebruiker</strong><br />' + (feature.properties['Weggebruiker'] !== null ? autolinker.link(String(feature.properties['Weggebruiker']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Wegfunctie" colspan="2"><strong>Wegfunctie</strong><br />' + (feature.properties['Wegfunctie'] !== null ? autolinker.link(String(feature.properties['Wegfunctie']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Wegcategorisering" colspan="2"><strong>Wegcategorisering</strong><br />' + (feature.properties['Wegcategorisering'] !== null ? autolinker.link(String(feature.properties['Wegcategorisering']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Wegtype" colspan="2"><strong>Wegtype</strong><br />' + (feature.properties['Wegtype'] !== null ? autolinker.link(String(feature.properties['Wegtype']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Categorie wegbreedte" colspan="2"><strong>Categorie wegbreedte</strong><br />' + (feature.properties['Categorie wegbreedte'] !== null ? autolinker.link(String(feature.properties['Categorie wegbreedte']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Snelheid" colspan="2"><strong>Snelheid</strong><br />' + (feature.properties['Snelheid'] !== null ? autolinker.link(String(feature.properties['Snelheid']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Jaar van aanleg" colspan="2"><strong>Jaar van aanleg</strong><br />' + (feature.properties['Jaar van aanleg'] !== null ? autolinker.link(String(feature.properties['Jaar van aanleg']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Wegen_1_0(feature) {
-            switch(String(feature.properties['Wegfunctie'])) {
-                case 'Fietspad':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(229,71,73,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Parkeerstrook':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(247,247,247,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(150,150,150,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Parkeerterrein':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(247,247,247,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(150,150,150,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Parkeervak':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(247,247,247,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(150,150,150,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Rijbaan':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(230,230,230,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Verkeersdrempel':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(230,230,230,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Voetgangersgebied':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(106,106,106,1.0)',
-                interactive: true,
-            }
-                    break;
-                case 'Voetpad':
-                    return {
-                pane: 'pane_Wegen_1',
-                opacity: 1,
-                color: 'rgba(35,35,35,1.0)',
-                dashArray: '',
-                lineCap: 'butt',
-                lineJoin: 'miter',
-                weight: 1.0, 
-                fill: true,
-                fillOpacity: 1,
-                fillColor: 'rgba(106,106,106,1.0)',
-                interactive: true,
-            }
-                    break;
-            }
-        }
-        map.createPane('pane_Wegen_1');
-        map.getPane('pane_Wegen_1').style.zIndex = 401;
-        map.getPane('pane_Wegen_1').style['mix-blend-mode'] = 'normal';
-        var layer_Wegen_1 = new L.geoJson(json_Wegen_1, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Wegen_1',
-            layerName: 'layer_Wegen_1',
-            pane: 'pane_Wegen_1',
-            onEachFeature: pop_Wegen_1,
-            style: style_Wegen_1_0,
-        });
-        bounds_group.addLayer(layer_Wegen_1);
-        map.addLayer(layer_Wegen_1);
-        function pop_Gebruiksfuncties_2(feature, layer) {
+        function pop_Gebruiksfuncties_1(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -359,11 +178,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_Gebruiksfuncties_2_0(feature) {
+        function style_Gebruiksfuncties_1_0(feature) {
             switch(String(feature.properties['Onderverdeling'])) {
                 case 'Berm':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -378,7 +197,7 @@
                     break;
                 case 'Beek':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -393,7 +212,7 @@
                     break;
                 case 'Bibliotheek Hoevelaken':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -408,7 +227,7 @@
                     break;
                 case 'Bloemrijk gras':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -423,7 +242,7 @@
                     break;
                 case 'Blokhaag':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -438,7 +257,7 @@
                     break;
                 case 'Bodembedekkers':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -453,7 +272,7 @@
                     break;
                 case 'Bosplantsoen':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -468,7 +287,7 @@
                     break;
                 case 'Fijne sierheester':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -483,7 +302,7 @@
                     break;
                 case 'Gazon':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -498,7 +317,7 @@
                     break;
                 case 'Greppel':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -513,7 +332,7 @@
                     break;
                 case 'Hondenuitlaatplaats':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -528,7 +347,7 @@
                     break;
                 case 'Natuurvriendelijke oever':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -543,7 +362,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -558,7 +377,7 @@
                     break;
                 case 'Sloot':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -573,7 +392,7 @@
                     break;
                 case 'Sporthal Ridderspoor':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -588,7 +407,7 @@
                     break;
                 case 'Struikrozen':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -603,7 +422,7 @@
                     break;
                 case 'Vijver':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -618,7 +437,7 @@
                     break;
                 case 'Waterloop':
                     return {
-                pane: 'pane_Gebruiksfuncties_2',
+                pane: 'pane_Gebruiksfuncties_1',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -633,21 +452,21 @@
                     break;
             }
         }
-        map.createPane('pane_Gebruiksfuncties_2');
-        map.getPane('pane_Gebruiksfuncties_2').style.zIndex = 402;
-        map.getPane('pane_Gebruiksfuncties_2').style['mix-blend-mode'] = 'normal';
-        var layer_Gebruiksfuncties_2 = new L.geoJson(json_Gebruiksfuncties_2, {
+        map.createPane('pane_Gebruiksfuncties_1');
+        map.getPane('pane_Gebruiksfuncties_1').style.zIndex = 401;
+        map.getPane('pane_Gebruiksfuncties_1').style['mix-blend-mode'] = 'normal';
+        var layer_Gebruiksfuncties_1 = new L.geoJson(json_Gebruiksfuncties_1, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_Gebruiksfuncties_2',
-            layerName: 'layer_Gebruiksfuncties_2',
-            pane: 'pane_Gebruiksfuncties_2',
-            onEachFeature: pop_Gebruiksfuncties_2,
-            style: style_Gebruiksfuncties_2_0,
+            dataVar: 'json_Gebruiksfuncties_1',
+            layerName: 'layer_Gebruiksfuncties_1',
+            pane: 'pane_Gebruiksfuncties_1',
+            onEachFeature: pop_Gebruiksfuncties_1,
+            style: style_Gebruiksfuncties_1_0,
         });
-        bounds_group.addLayer(layer_Gebruiksfuncties_2);
-        map.addLayer(layer_Gebruiksfuncties_2);
-        function pop_ONTWERP_3(feature, layer) {
+        bounds_group.addLayer(layer_Gebruiksfuncties_1);
+        map.addLayer(layer_Gebruiksfuncties_1);
+        function pop_ONTWERP_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -678,16 +497,19 @@
                         <td colspan="2">' + (feature.properties['Maatregel 2'] !== null ? autolinker.link(String(feature.properties['Maatregel 2']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
+                        <td class="visible-with-data" id="Jaar van aanleg" colspan="2"><strong>Jaar van aanleg</strong><br />' + (feature.properties['Jaar van aanleg'] !== null ? autolinker.link(String(feature.properties['Jaar van aanleg']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
                         <td class="visible-with-data" id="Huidige situatie" colspan="2"><strong>Huidige situatie</strong><br />' + (feature.properties['Huidige situatie'] !== null ? '<img src="images/' + String(feature.properties['Huidige situatie']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
                     </tr>\
                     <tr>\
                         <td class="visible-with-data" id="Nieuwe situatie" colspan="2"><strong>Nieuwe situatie</strong><br />' + (feature.properties['Nieuwe situatie'] !== null ? '<img src="images/' + String(feature.properties['Nieuwe situatie']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['field_15'] !== null ? autolinker.link(String(feature.properties['field_15']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['field_17'] !== null ? autolinker.link(String(feature.properties['field_17']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                        <td colspan="2">' + (feature.properties['field_16'] !== null ? '<img src="images/' + String(feature.properties['field_16']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
+                        <td class="visible-with-data" id="field_18" colspan="2"><strong>field_18</strong><br />' + (feature.properties['field_18'] !== null ? autolinker.link(String(feature.properties['field_18']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             var content = removeEmptyRowsFromPopupContent(popupContent, feature);
@@ -697,11 +519,11 @@
 			layer.bindPopup(content, { maxHeight: 400 });
         }
 
-        function style_ONTWERP_3_0(feature) {
+        function style_ONTWERP_2_0(feature) {
             switch(String(feature.properties['Maatregel'])) {
                 case 'Aanleg fietspad':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -716,7 +538,7 @@
                     break;
                 case 'Fietsstraat in asfalt':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -731,7 +553,7 @@
                     break;
                 case 'Fietsstraat in asfalt; middenstrook met afwijkende toplaag':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -746,7 +568,7 @@
                     break;
                 case 'Instellen schoolzone':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -759,7 +581,7 @@
                     break;
                 case 'Nieuwe inrichting hofje':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -774,7 +596,7 @@
                     break;
                 case 'Trottoir verwijderen':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -789,7 +611,7 @@
                     break;
                 case 'Verwijderen parkeerstrook':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -804,7 +626,7 @@
                     break;
                 case 'Vervangen verharding':
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
                 dashArray: '',
@@ -819,7 +641,7 @@
                     break;
                 default:
                     return {
-                pane: 'pane_ONTWERP_3',
+                pane: 'pane_ONTWERP_2',
                 opacity: 1,
                 color: 'rgba(247,247,247,1.0)',
                 dashArray: '',
@@ -834,20 +656,91 @@
                     break;
             }
         }
-        map.createPane('pane_ONTWERP_3');
-        map.getPane('pane_ONTWERP_3').style.zIndex = 403;
-        map.getPane('pane_ONTWERP_3').style['mix-blend-mode'] = 'normal';
-        var layer_ONTWERP_3 = new L.geoJson(json_ONTWERP_3, {
+        map.createPane('pane_ONTWERP_2');
+        map.getPane('pane_ONTWERP_2').style.zIndex = 402;
+        map.getPane('pane_ONTWERP_2').style['mix-blend-mode'] = 'normal';
+        var layer_ONTWERP_2 = new L.geoJson(json_ONTWERP_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_ONTWERP_3',
-            layerName: 'layer_ONTWERP_3',
-            pane: 'pane_ONTWERP_3',
-            onEachFeature: pop_ONTWERP_3,
-            style: style_ONTWERP_3_0,
+            dataVar: 'json_ONTWERP_2',
+            layerName: 'layer_ONTWERP_2',
+            pane: 'pane_ONTWERP_2',
+            onEachFeature: pop_ONTWERP_2,
+            style: style_ONTWERP_2_0,
         });
-        bounds_group.addLayer(layer_ONTWERP_3);
-        map.addLayer(layer_ONTWERP_3);
+        bounds_group.addLayer(layer_ONTWERP_2);
+        map.addLayer(layer_ONTWERP_2);
+        function pop_Bomen_3(feature, layer) {
+            layer.on({
+                mouseout: function(e) {
+                    for (var i in e.target._eventParents) {
+                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
+                            e.target._eventParents[i].resetStyle(e.target);
+                        }
+                    }
+                },
+                mouseover: highlightFeature,
+            });
+            var popupContent = '<table>\
+                    <tr>\
+                        <td class="visible-with-data" id="boomtype" colspan="2"><strong>boomtype</strong><br />' + (feature.properties['boomtype'] !== null ? autolinker.link(String(feature.properties['boomtype']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="latboomsoort" colspan="2"><strong>latboomsoort</strong><br />' + (feature.properties['latboomsoort'] !== null ? autolinker.link(String(feature.properties['latboomsoort']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="nedboomsoort" colspan="2"><strong>nedboomsoort</strong><br />' + (feature.properties['nedboomsoort'] !== null ? autolinker.link(String(feature.properties['nedboomsoort']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="plantjaar" colspan="2"><strong>plantjaar</strong><br />' + (feature.properties['plantjaar'] !== null ? autolinker.link(String(feature.properties['plantjaar']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td class="visible-with-data" id="boomhoogte" colspan="2"><strong>boomhoogte</strong><br />' + (feature.properties['boomhoogte'] !== null ? autolinker.link(String(feature.properties['boomhoogte']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
+			layer.on('popupopen', function(e) {
+				addClassToPopupIfMedia(content, e.popup);
+			});
+			layer.bindPopup(content, { maxHeight: 400 });
+        }
+
+        function style_Bomen_3_0() {
+            return {
+                pane: 'pane_Bomen_3',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(49,133,63,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 2.0,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(134,82,39,0.15294117647058825)',
+                interactive: true,
+            }
+        }
+        map.createPane('pane_Bomen_3');
+        map.getPane('pane_Bomen_3').style.zIndex = 403;
+        map.getPane('pane_Bomen_3').style['mix-blend-mode'] = 'normal';
+        var layer_Bomen_3 = new L.geoJson(json_Bomen_3, {
+            attribution: '',
+            interactive: true,
+            dataVar: 'json_Bomen_3',
+            layerName: 'layer_Bomen_3',
+            pane: 'pane_Bomen_3',
+            onEachFeature: pop_Bomen_3,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Bomen_3_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Bomen_3);
+        map.addLayer(layer_Bomen_3);
         function pop_Kansen_4(feature, layer) {
             layer.on({
                 mouseout: function(e) {
@@ -961,149 +854,6 @@
         });
         bounds_group.addLayer(layer_Kansen_4);
         map.addLayer(layer_Kansen_4);
-        function pop_Gebruiksaanwijzing_5(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="Titel" colspan="2"><strong>Titel</strong><br />' + (feature.properties['Titel'] !== null ? autolinker.link(String(feature.properties['Titel']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Doel van de kaart" colspan="2"><strong>Doel van de kaart</strong><br />' + (feature.properties['Doel van de kaart'] !== null ? autolinker.link(String(feature.properties['Doel van de kaart']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Basemap" colspan="2"><strong>Basemap</strong><br />' + (feature.properties['Basemap'] !== null ? autolinker.link(String(feature.properties['Basemap']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Lagen" colspan="2"><strong>Lagen</strong><br />' + (feature.properties['Lagen'] !== null ? autolinker.link(String(feature.properties['Lagen']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Interactieve functies" colspan="2"><strong>Interactieve functies</strong><br />' + (feature.properties['Interactieve functies'] !== null ? autolinker.link(String(feature.properties['Interactieve functies']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Disclaimer" colspan="2"><strong>Disclaimer</strong><br />' + (feature.properties['Disclaimer'] !== null ? autolinker.link(String(feature.properties['Disclaimer']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Overig" colspan="2"><strong>Overig</strong><br />' + (feature.properties['Overig'] !== null ? autolinker.link(String(feature.properties['Overig']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['field_10'] !== null ? autolinker.link(String(feature.properties['field_10']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Gebruiksaanwijzing_5_0() {
-            return {
-                pane: 'pane_Gebruiksaanwijzing_5',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/Gebruiksaanwijzing_5.svg',
-            iconSize: [27.36, 27.36]
-        }),
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Gebruiksaanwijzing_5');
-        map.getPane('pane_Gebruiksaanwijzing_5').style.zIndex = 405;
-        map.getPane('pane_Gebruiksaanwijzing_5').style['mix-blend-mode'] = 'normal';
-        var layer_Gebruiksaanwijzing_5 = new L.geoJson(json_Gebruiksaanwijzing_5, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Gebruiksaanwijzing_5',
-            layerName: 'layer_Gebruiksaanwijzing_5',
-            pane: 'pane_Gebruiksaanwijzing_5',
-            onEachFeature: pop_Gebruiksaanwijzing_5,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_Gebruiksaanwijzing_5_0(feature));
-            },
-        });
-        bounds_group.addLayer(layer_Gebruiksaanwijzing_5);
-        map.addLayer(layer_Gebruiksaanwijzing_5);
-        function pop_Animatie_6(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td class="visible-with-data" id="Wegen" colspan="2"><strong>Wegen</strong><br />' + (feature.properties['Wegen'] !== null ? '<img src="images/' + String(feature.properties['Wegen']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Huizen" colspan="2"><strong>Huizen</strong><br />' + (feature.properties['Huizen'] !== null ? '<img src="images/' + String(feature.properties['Huizen']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Bomen" colspan="2"><strong>Bomen</strong><br />' + (feature.properties['Bomen'] !== null ? '<img src="images/' + String(feature.properties['Bomen']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Wijk" colspan="2"><strong>Wijk</strong><br />' + (feature.properties['Wijk'] !== null ? '<img src="images/' + String(feature.properties['Wijk']).replace(/[\\/:]/g, '_').trim().replace(/'/g, '\'').replace(/"/g, '&quot;') + '">' : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td class="visible-with-data" id="Toelichting" colspan="2"><strong>Toelichting</strong><br />' + (feature.properties['Toelichting'] !== null ? autolinker.link(String(feature.properties['Toelichting']).replace(/'/g, '\'').toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            var content = removeEmptyRowsFromPopupContent(popupContent, feature);
-			layer.on('popupopen', function(e) {
-				addClassToPopupIfMedia(content, e.popup);
-			});
-			layer.bindPopup(content, { maxHeight: 400 });
-        }
-
-        function style_Animatie_6_0() {
-            return {
-                pane: 'pane_Animatie_6',
-        rotationAngle: 0.0,
-        rotationOrigin: 'center center',
-        icon: L.icon({
-            iconUrl: 'markers/Animatie_6.svg',
-            iconSize: [22.04, 22.04]
-        }),
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Animatie_6');
-        map.getPane('pane_Animatie_6').style.zIndex = 406;
-        map.getPane('pane_Animatie_6').style['mix-blend-mode'] = 'normal';
-        var layer_Animatie_6 = new L.geoJson(json_Animatie_6, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Animatie_6',
-            layerName: 'layer_Animatie_6',
-            pane: 'pane_Animatie_6',
-            onEachFeature: pop_Animatie_6,
-            pointToLayer: function (feature, latlng) {
-                var context = {
-                    feature: feature,
-                    variables: {}
-                };
-                return L.marker(latlng, style_Animatie_6_0(feature));
-            },
-        });
-        bounds_group.addLayer(layer_Animatie_6);
-        map.addLayer(layer_Animatie_6);
         setBounds();
         var mapDiv = document.getElementById('map');
         var row = document.createElement('div');
@@ -1124,7 +874,7 @@
         document.getElementById("all").appendChild(col1);
         document.getElementById("all").appendChild(col2);
         col1.appendChild(mapDiv)
-        var Filters = {"Gebruiksfunctie": "str","Maatregel": "str","Thema": "str"};
+        var Filters = {"Gebruiksfunctie": "str","Thema": "str","Maatregel": "str"};
         function filterFunc() {
           map.eachLayer(function(lyr){
           if ("options" in lyr && "dataVar" in lyr["options"]){
@@ -1257,6 +1007,38 @@
             div_Gebruiksfunctie.appendChild(reset_Gebruiksfunctie);
             document.getElementById("menu").appendChild(
                 document.createElement("div"));
+            var div_Thema = document.createElement('div');
+            div_Thema.id = "div_Thema";
+            div_Thema.className= "filterselect";
+            document.getElementById("menu").appendChild(div_Thema);
+            sel_Thema = document.createElement('select');
+            sel_Thema.multiple = true;
+            sel_Thema.size = 3;
+            sel_Thema.id = "sel_Thema";
+            var Thema_options_str = "<option value='' unselected></option>";
+            sel_Thema.onchange = function(){filterFunc()};
+            Thema_options_str  += '<option value="Biodiversiteit">Biodiversiteit</option>';
+            Thema_options_str  += '<option value="Verkeer">Verkeer</option>';
+            Thema_options_str  += '<option value="Water">Water</option>';
+            sel_Thema.innerHTML = Thema_options_str;
+            div_Thema.appendChild(sel_Thema);
+            var lab_Thema = document.createElement('div');
+            lab_Thema.innerHTML = 'Thema';
+            lab_Thema.className = 'filterlabel';
+            div_Thema.appendChild(lab_Thema);
+            var reset_Thema = document.createElement('div');
+            reset_Thema.innerHTML = 'clear filter';
+            reset_Thema.className = 'filterlabel';
+            reset_Thema.onclick = function() {
+                var options = document.getElementById("sel_Thema").options;
+                for (var i=0; i < options.length; i++) {
+                    options[i].selected = false;
+                }
+                filterFunc();
+            };
+            div_Thema.appendChild(reset_Thema);
+            document.getElementById("menu").appendChild(
+                document.createElement("div"));
             var div_Maatregel = document.createElement('div');
             div_Maatregel.id = "div_Maatregel";
             div_Maatregel.className= "filterselect";
@@ -1293,38 +1075,6 @@
                 filterFunc();
             };
             div_Maatregel.appendChild(reset_Maatregel);
-            document.getElementById("menu").appendChild(
-                document.createElement("div"));
-            var div_Thema = document.createElement('div');
-            div_Thema.id = "div_Thema";
-            div_Thema.className= "filterselect";
-            document.getElementById("menu").appendChild(div_Thema);
-            sel_Thema = document.createElement('select');
-            sel_Thema.multiple = true;
-            sel_Thema.size = 3;
-            sel_Thema.id = "sel_Thema";
-            var Thema_options_str = "<option value='' unselected></option>";
-            sel_Thema.onchange = function(){filterFunc()};
-            Thema_options_str  += '<option value="Biodiversiteit">Biodiversiteit</option>';
-            Thema_options_str  += '<option value="Verkeer">Verkeer</option>';
-            Thema_options_str  += '<option value="Water">Water</option>';
-            sel_Thema.innerHTML = Thema_options_str;
-            div_Thema.appendChild(sel_Thema);
-            var lab_Thema = document.createElement('div');
-            lab_Thema.innerHTML = 'Thema';
-            lab_Thema.className = 'filterlabel';
-            div_Thema.appendChild(lab_Thema);
-            var reset_Thema = document.createElement('div');
-            reset_Thema.innerHTML = 'clear filter';
-            reset_Thema.className = 'filterlabel';
-            reset_Thema.onclick = function() {
-                var options = document.getElementById("sel_Thema").options;
-                for (var i=0; i < options.length; i++) {
-                    options[i].selected = false;
-                }
-                filterFunc();
-            };
-            div_Thema.appendChild(reset_Thema);
         </script>        
     </body>
 </html>
